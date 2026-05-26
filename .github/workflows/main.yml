@@ -1,0 +1,20 @@
+name: Compress Single C File
+
+on: [push]
+
+jobs:
+  compress:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Compile and compress
+        run: |
+          # Replace 'program.c' with your C file name
+          gcc soul.c -o soul -lpthread
+          
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: binary
+          path: program_compressed
